@@ -1,10 +1,8 @@
 #!/bin/sh
 
 # Create frontend directory and navigate there
-echo "Enter frontend directory name:"
-read frontend_dir
-mkdir $frontend_dir
-cd $frontend_dir
+mkdir frontend
+cd frontend
 
 # Install React-TS project with Vite
 bun create vite . --template react-ts

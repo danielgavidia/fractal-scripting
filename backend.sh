@@ -1,10 +1,8 @@
 #!/bin/sh
 
 # Create backend directory and navigate there
-echo "Enter backend directory name:"
-read backend_dir
-mkdir $backend_dir
-cd $backend_dir
+mkdir backend
+cd backend
 
 # Initialize bun app (with default package name)
 bun init -y
