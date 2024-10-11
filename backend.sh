@@ -22,8 +22,17 @@ bun i @prisma/client
 # Install Docker DB
 touch docker-compose.yaml
 
+# Install Firebase-Admin (auth)
+bun i firebase-admin
+
+# Return to parent dir
+cd ..
+
 # Change: index.ts to include basic express setup
-cat > index.ts <<EOL
+rm backend/index.ts
+mkdir backend/express
+touch backend/express/index.ts
+cat > backend/express/index.ts <<EOL
 import express from 'express';
 
 const app = express();
@@ -36,13 +45,14 @@ app.use(express.json());
 app.get('/', (req, res) => {
   res.send('Hello World!');
 });
+
 app.listen(port, () => {
   console.log("Express running at http://localhost: ", port);
 });
 EOL
 
 # Change: add basic DB setup to docker-compose.yaml file
-cat > docker-compose.yaml <<EOL
+cat > backend/docker-compose.yaml <<EOL
 version: "3.9"
 services:
     postgres1:
@@ -56,13 +66,12 @@ services:
 EOL
 
 # Change: add prisma client code
-cd prisma
-touch prisma.ts
-cat > prisma.ts <<EOL
+touch backend/prisma/prisma.ts
+cat > backend/prisma/prisma.ts <<EOL
 import { PrismaClient } from "@prisma/client";
 const prisma = new PrismaClient();
 export default prisma;
 EOL
 
-# Go back to parent directory
-cd ../../
+# Run auth script
+source backendAuth.sh
