@@ -105,7 +105,7 @@ const AuthForm = ({ authOperation }: AuthProps) => {
                     onChange={(e) => setPassword(e.target.value)}
                     placeholder="password"
                 />
-                <button onClick={handleFirebaseAuth} className="border-2 border-neutral">
+                <button onClick={handleFirebaseAuth}>
                     {authOperation === "login" ? "Login" : "Signup"}
                 </button>
             </form>
