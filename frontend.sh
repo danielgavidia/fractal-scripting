@@ -23,7 +23,7 @@ bunx tailwindcss init -p
 # Install DaisyUI
 bun add -D daisyui@latest
 
-# Update tailwind config
+# Change: update tailwind config
 cat > tailwind.config.js <<EOL
 /** @type {import('tailwindcss').Config} */
 export default {
@@ -38,7 +38,7 @@ export default {
 };
 EOL
 
-# Replace index.css with tailwind starter
+# Change: replace index.css with tailwind starter
 cd src
 cat > index.css <<EOL
 @tailwind base; 
@@ -46,7 +46,7 @@ cat > index.css <<EOL
 @tailwind utilities; 
 EOL
 
-# Replace default App.tsx with blank App.tsx
+# Change: replace default App.tsx with blank App.tsx
 cat > App.tsx <<EOL
 const App = () => {
 	return <div>App</div>;
@@ -55,7 +55,7 @@ const App = () => {
 export default App;
 EOL
 
-# Delete App.css
+# Change: delete App.css
 rm App.css
 
 # Go back to parent directory
