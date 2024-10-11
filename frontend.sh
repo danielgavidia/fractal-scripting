@@ -23,8 +23,14 @@ bunx tailwindcss init -p
 # Install DaisyUI
 bun add -D daisyui@latest
 
+# Install firebase
+bun i firebase
+
+# Return to parents dir
+cd ..
+
 # Change: update tailwind config
-cat > tailwind.config.js <<EOL
+cat > frontend/tailwind.config.js <<EOL
 /** @type {import('tailwindcss').Config} */
 export default {
 	content: ["./index.html", "./src/**/*.{js,ts,jsx,tsx}"],
@@ -39,15 +45,14 @@ export default {
 EOL
 
 # Change: replace index.css with tailwind starter
-cd src
-cat > index.css <<EOL
+cat > frontend/src/index.css <<EOL
 @tailwind base; 
 @tailwind components; 
 @tailwind utilities; 
 EOL
 
 # Change: replace default App.tsx with blank App.tsx
-cat > App.tsx <<EOL
+cat > frontend/src/App.tsx <<EOL
 const App = () => {
 	return <div>App</div>;
 };
@@ -56,7 +61,7 @@ export default App;
 EOL
 
 # Change: delete App.css
-rm App.css
+rm frontend/src/App.css
 
-# Go back to parent directory
-cd ../../
+# Run frontendAuth.sh script
+source frontendAuth.sh
